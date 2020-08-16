@@ -1,0 +1,14 @@
+<ion-item (click)="onClick(user)">
+  <ion-avatar slot="start">
+    <img [src]="user.picture.thumbnail">
+  </ion-avatar>
+
+  <ion-label>
+    <h2>{{user.name.title}}</h2>
+    <h3>{{user.name.first}} {{user.name.last}}</h3>
+  </ion-label>
+  <ion-note slot="end">
+    <ion-icon name="location-outline"></ion-icon>
+    {{user.location.city}}, {{user.location.country}}
+  </ion-note>
+</ion-item>
