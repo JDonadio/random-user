@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Profile's {{userName}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="header-section">
+    <ion-avatar class="header-section__picture">
+      <img [src]="user.picture.large">
+    </ion-avatar>
+
+    <div class="header-section__name">
+      {{userName}}
+    </div>
+  </div>
+
+  <div class="main-section">
+    <div class="main-section__item"></div>
+  </div>
+
+</ion-content>

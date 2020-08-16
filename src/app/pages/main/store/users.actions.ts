@@ -15,6 +15,11 @@ export class GetUsersFailure {
 	constructor(public payload: { users: IUser[] }) { }
 }
 
+export class SelectUser {
+	static readonly type = '[USERS] Select User';
+	constructor(public payload?: { user: IUser }) { }
+}
+
 export class ResetUserState {
 	static readonly type = '[USERS] Reset Users State';
 	constructor() { }

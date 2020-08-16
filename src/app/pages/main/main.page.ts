@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
 import { IUser, IUserState, makeUserState } from 'src/app/models/user';
-import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Store, Select } from '@ngxs/store';
-import { UsersState } from '../../store/users.state';
-import { GetUsers, ResetUserState } from '../../store/users.actions';
+import { UsersState } from 'src/app/pages/main/store/users.state';
+import { GetUsers, ResetUserState, SelectUser } from 'src/app/pages/main/store/users.actions';
 
 @Component({
   selector: 'app-main',
@@ -46,25 +46,22 @@ export class MainPage implements OnInit, OnDestroy {
     return this.state && `(${this.state.users.length || '..'})`;
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-
   public openUserDetais(user: IUser): void {
-    const navigationExtras: NavigationExtras = {
-      queryParams: { user },
-      relativeTo: this.route,
-    };
-    this.router.navigate(['user-details'], navigationExtras);
+    this.store.dispatch(new SelectUser({ user })).subscribe();
+    this.router.navigate(['user-details'], { relativeTo: this.route });
   }
 
   public showMore(): void {
     this.pageCounter++;
     this.store.dispatch(new GetUsers({ page: this.pageCounter })).subscribe();
   }
-
+  
   public reset(): void {
     this.pageCounter = 1;
     this.store.dispatch(new ResetUserState()).subscribe();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { State, Action, StateContext } from '@ngxs/store';
-import { GetUsers, GetUsersSuccess, GetUsersFailure, ResetUserState } from './users.actions';
+import { GetUsers, GetUsersSuccess, GetUsersFailure, ResetUserState, SelectUser } from './users.actions';
 import { IUserState, makeUserState } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user/user.service';
 import { catchError, map } from 'rxjs/operators';
@@ -61,6 +61,15 @@ export class UsersState {
 			users: state.users.slice(0, REQUEST.RESULTS),
 			isLoading: false,
 			hasError: false,
+		});
+	}
+
+	@Action(SelectUser)
+	selectUser(stateContext: StateContext<IUserState>, action: SelectUser) {
+		const state = stateContext.getState();
+		stateContext.setState({
+			...state,
+			selectedUser: action.payload ? action.payload.user : null,
 		});
 	}
 }
