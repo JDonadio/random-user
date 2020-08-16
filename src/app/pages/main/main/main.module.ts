@@ -8,6 +8,7 @@ import { MainPageRoutingModule } from './main-routing.module';
 
 import { MainPage } from './main.page';
 import { UserRowComponent } from 'src/app/components/user-row/user-row/user-row.component';
+import { SpinnerComponent } from 'src/app/components/spinner/spinner/spinner.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { UserRowComponent } from 'src/app/components/user-row/user-row/user-row.
   declarations: [
     MainPage,
     UserRowComponent,
+    SpinnerComponent,
   ]
 })
 export class MainPageModule {}

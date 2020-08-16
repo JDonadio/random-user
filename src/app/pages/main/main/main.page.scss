@@ -1,10 +1,8 @@
 .footer {
-	display: flex;
-	align-items: center;
-	justify-content: center;
 
 	&__show-more {
+		text-align: center;
 		color: darkblue;
-		padding: 1rem;
+		padding: 1.5rem 0;
 	}
 }

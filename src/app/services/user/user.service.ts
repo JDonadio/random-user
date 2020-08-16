@@ -19,8 +19,8 @@ export class UserService {
     private httpClient: HttpClient,
   ) { }
 
-  getUsers(page?: number): Observable<IUser[]> {
-    const url = `/api/?page=${page || 1}seed=abc&results=${this.results}&inc=${this.params}`;
+  getUsers(page: number): Observable<IUser[]> {
+    const url = `/api/?page=${page}seed=abc&results=${this.results}&inc=${this.params}`;
     return this.httpClient.get(url).pipe(
       map((res: IResponseApi) => {
         return res.results;

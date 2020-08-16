@@ -4,7 +4,7 @@ import { IUser, IUserState, makeUserState } from 'src/app/models/user';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { Store, Select } from '@ngxs/store';
 import { UsersState } from '../../store/users.state';
-import { GetUsers } from '../../store/users.actions';
+import { GetUsers, ResetUserState } from '../../store/users.actions';
 
 @Component({
   selector: 'app-main',
@@ -26,13 +26,24 @@ export class MainPage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.store.dispatch(new GetUsers()).subscribe();
+    this.store.dispatch(new GetUsers({ page: this.pageCounter })).subscribe();
     this.subscription.add(
       this.usersState$.subscribe(state => {
         this.state = state;
-        console.log('state:', state)
       })
     )
+  }
+
+  get showResetButton(): boolean {
+    return this.state && !this.state.isLoading;
+  }
+
+  get showSpinner(): boolean {
+    return this.state && this.state.isLoading;
+  }
+
+  get totalUsers(): string {
+    return this.state && `(${this.state.users.length || '..'})`;
   }
 
   ngOnDestroy() {
@@ -40,7 +51,6 @@ export class MainPage implements OnInit, OnDestroy {
   }
 
   public openUserDetais(user: IUser): void {
-    console.log(user)
     const navigationExtras: NavigationExtras = {
       queryParams: { user },
       relativeTo: this.route,
@@ -50,5 +60,11 @@ export class MainPage implements OnInit, OnDestroy {
 
   public showMore(): void {
     this.pageCounter++;
+    this.store.dispatch(new GetUsers({ page: this.pageCounter })).subscribe();
+  }
+
+  public reset(): void {
+    this.pageCounter = 1;
+    this.store.dispatch(new ResetUserState()).subscribe();
   }
 }
