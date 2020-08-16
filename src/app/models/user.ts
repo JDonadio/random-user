@@ -5,8 +5,10 @@ export interface IUserName {
 }
 
 export interface IStreet {
-	name: string,
-	number: number,
+	street: {
+		name: string,
+		number: number,
+	}
 }
 
 export interface ILocation extends IStreet {
@@ -22,13 +24,22 @@ export interface IUserBasics {
 }
 
 export interface IUserState {
-	state: {
-		isLoading: boolean,
-		hasError: boolean,
-	}
+	data: IUser[],
+	isLoading: boolean,
+	hasError: boolean,
 }
 
-export interface IUser extends IUserBasics, IUserState {
+export interface IUser extends IUserBasics {
 	name: IUserName,
 	location: ILocation,
+	state: IUserState,
+}
+
+export function makeUserState(data: Partial<IUserState>) {
+	const defaultValue: IUserState = {
+		data: [],
+		isLoading: false,
+		hasError: false,
+	};
+	return { ...defaultValue, ...data };
 }
