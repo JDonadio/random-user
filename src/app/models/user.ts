@@ -24,7 +24,7 @@ export interface IUserBasics {
 }
 
 export interface IUserState {
-	data: IUser[],
+	users: IUser[],
 	isLoading: boolean,
 	hasError: boolean,
 }
@@ -37,7 +37,7 @@ export interface IUser extends IUserBasics {
 
 export function makeUserState(data: Partial<IUserState>) {
 	const defaultValue: IUserState = {
-		data: [],
+		users: [],
 		isLoading: false,
 		hasError: false,
 	};

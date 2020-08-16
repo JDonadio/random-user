@@ -1,8 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { IUser } from 'src/app/models/user';
+import { Subscription, Observable } from 'rxjs';
+import { IUser, IUserState, makeUserState } from 'src/app/models/user';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
-import { UserService } from 'src/app/services/user/user.service';
+import { Store, Select } from '@ngxs/store';
+import { UsersState } from '../../store/users.state';
+import { GetUsers } from '../../store/users.actions';
 
 @Component({
   selector: 'app-main',
@@ -10,28 +12,27 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./main.page.scss'],
 })
 export class MainPage implements OnInit, OnDestroy {
-  public userList: any = [];
+  public state: IUserState = makeUserState({});
 
   private subscription = new Subscription();
   private pageCounter: number = 1;
 
+  @Select(UsersState) usersState$!: Observable<IUserState>;
+
   constructor(
-    private userService: UserService,
     private router: Router,
     private route: ActivatedRoute,
-  ) { }
+    private store: Store,
+  ) {}
 
   ngOnInit() {
-    this.getUsers();
-  }
-
-  private getUsers() {
+    this.store.dispatch(new GetUsers()).subscribe();
     this.subscription.add(
-      this.userService.getUsers(this.pageCounter).subscribe((users: IUser[]) => {
-        this.userList = [...this.userList.concat(users)];
-        console.log('this.userList:', users)
+      this.usersState$.subscribe(state => {
+        this.state = state;
+        console.log('state:', state)
       })
-    );
+    )
   }
 
   ngOnDestroy() {
@@ -49,6 +50,5 @@ export class MainPage implements OnInit, OnDestroy {
 
   public showMore(): void {
     this.pageCounter++;
-    this.getUsers();
   }
 }
