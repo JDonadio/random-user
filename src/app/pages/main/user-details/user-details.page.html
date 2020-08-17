@@ -22,7 +22,25 @@
   </div>
 
   <div class="main-section">
-    <div class="main-section__item"></div>
+    <user-info-item
+      [icon]="'gender'"
+      [info]="user.gender">
+    </user-info-item>
+
+    <user-info-item
+      [icon]="'location'"
+      [info]="composedLocation">
+    </user-info-item>
+
+    <user-info-item
+      [icon]="'mail'"
+      [info]="user.email">
+    </user-info-item>
+
+    <user-info-item
+      [icon]="'phone-portrait'"
+      [info]="user.cell">
+    </user-info-item>
   </div>
 
 </ion-content>

@@ -35,6 +35,12 @@ export class UserDetailsPage implements OnInit {
     return `${first} ${last}`;
   }
 
+  get composedLocation() {
+    if (!this.user) return;
+    const {location} = this.user;
+    return `${location.city} ${location.country}`;
+  }
+
   ngOnDestroy() {
     this.store.dispatch(new SelectUser()).subscribe();
     this.subscription.unsubscribe();

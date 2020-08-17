@@ -1,0 +1,21 @@
+@import 'variables';
+
+.item-info {
+	display: flex;
+	flex-direction: row;
+
+	&__icon {
+		margin: $spacing-M $spacing-XXS $spacing-M $spacing-M;
+    font-size: $font-size-XXL;
+	}
+
+	&__divider {
+		border: 1px solid $border-color-primary;
+    margin: 23px 10px;
+	}
+
+	&__description {
+		margin: auto auto auto $spacing-XS;
+    font-size: $font-size-M;
+	}
+}

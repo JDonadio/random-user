@@ -1,8 +1,15 @@
 @import 'variables';
 
+h3 {
+	margin-top: $spacing-XXXS;
+}
+h5 {
+	margin: 0;
+}
+
 .header-section {
 	width: 100%;
-	height: 280px;
+	height: 260px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -17,7 +24,7 @@
     border: 2px solid $border-color-tertiary;
     background-color: transparent;
 	}
-
+	
 	&__name {
 		text-align: center;
 		margin-top: $spacing-XS;
@@ -26,5 +33,6 @@
 
 .main-section {
 	margin: $spacing-XS $spacing-M ;
-	border-top: 1px solid $border-color-secondary;
+	padding-top: $spacing-XS;
+	border-top: 1px solid $border-color-primary;
 }
