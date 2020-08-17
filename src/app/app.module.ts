@@ -14,7 +14,7 @@ import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { environment } from 'src/environments/environment';
-import { UsersState } from 'src/app/pages/store/users.state';
+import { UsersState } from 'src/app/pages/main/store/users.state';
 
 @NgModule({
   declarations: [AppComponent],

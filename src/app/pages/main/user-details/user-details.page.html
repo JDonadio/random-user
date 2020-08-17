@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Profile's {{userName}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="header-section">
+    <ion-avatar class="header-section__picture">
+      <img [src]="user.picture.large">
+    </ion-avatar>
+
+    <div class="header-section__name">
+      <h5>{{user.name.title}}</h5>
+      <h3>{{userName}}</h3>
+    </div>
+  </div>
+
+  <div class="main-section">
+    <user-info-item
+      [icon]="'gender'"
+      [info]="user.gender">
+    </user-info-item>
+
+    <user-info-item
+      [icon]="'location'"
+      [info]="composedLocation">
+    </user-info-item>
+
+    <user-info-item
+      [icon]="'mail'"
+      [info]="user.email">
+    </user-info-item>
+
+    <user-info-item
+      [icon]="'phone-portrait'"
+      [info]="user.cell">
+    </user-info-item>
+  </div>
+
+</ion-content>

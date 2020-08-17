@@ -1,0 +1,10 @@
+@import 'variables';
+
+.footer {
+	&__show-more {
+		text-align: center;
+		font-weight: 600;
+		color: $light-blue;
+		padding: 1.5rem 0;
+	}
+}

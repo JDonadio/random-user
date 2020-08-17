@@ -9,7 +9,11 @@
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -39,6 +43,11 @@
                 "input": "src/global.scss"
               }
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/app/libs/styles"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
