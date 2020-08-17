@@ -1,0 +1,52 @@
+@mixin font-primary-bold {
+	font-weight: 600;
+}
+
+@mixin font-primary-extra-bold {
+	font-weight: 800;
+}
+
+@mixin font-primary-italic {
+	font-weight: normal;
+	font-style: italic;
+}
+
+@mixin font-primary-italic {
+	font-weight: normal;
+	font-style: italic;
+}
+
+@mixin font-primary-italic-bold {
+	font-weight: 600;
+	font-style: italic;
+}
+
+@mixin font-primary-italic-extra-bold {
+	font-weight: 800;
+	font-style: italic;
+}
+
+@mixin keyframes($animation-name) {
+	@-webkit-keyframes #{$animation-name} {
+		@content;
+	}
+	@keyframes #{$animation-name} {
+		@content;
+	}
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}

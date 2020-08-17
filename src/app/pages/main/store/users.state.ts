@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { State, Action, StateContext } from '@ngxs/store';
 import { GetUsers, GetUsersSuccess, GetUsersFailure, ResetUserState, SelectUser, UpdateUserAvatar } from './users.actions';
-import { IUserState, makeUserState, IUser, makeUser, updateUserPictures } from 'src/app/models/user';
+import { IUserState, makeUserState, IUser, updateUserPictures } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user/user.service';
 import { catchError, map } from 'rxjs/operators';
 import { REQUEST } from 'src/app/utils/consts';
