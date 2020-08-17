@@ -20,7 +20,7 @@ export class UserService {
   ) { }
 
   getUsers(page: number): Observable<IUser[]> {
-    const url = `/api/?page=${page}seed=abc&results=${this.results}&inc=${this.params}`;
+    const url = `https://randomuser.me/api/?page=${page}seed=abc&results=${this.results}&inc=${this.params}`;
 
     return this.httpClient.get(url).pipe(
       map((res: IResponseApi) => {

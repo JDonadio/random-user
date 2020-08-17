@@ -1,4 +1,4 @@
 export const REQUEST = {
 	RESULTS: 5,
-	DEFAULT_PARAMS: ['name', 'gender', 'email', 'cell', 'picture', 'location'].join(','),
+	DEFAULT_PARAMS: ['name', 'gender', 'email', 'cell', 'picture', 'location', 'dob', 'id'].join(','),
 }

@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { State, Action, StateContext } from '@ngxs/store';
-import { GetUsers, GetUsersSuccess, GetUsersFailure, ResetUserState, SelectUser } from './users.actions';
-import { IUserState, makeUserState } from 'src/app/models/user';
+import { GetUsers, GetUsersSuccess, GetUsersFailure, ResetUserState, SelectUser, UpdateUserAvatar } from './users.actions';
+import { IUserState, makeUserState, IUser, makeUser, updateUserPictures } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user/user.service';
 import { catchError, map } from 'rxjs/operators';
 import { REQUEST } from 'src/app/utils/consts';
+import { patch, updateItem } from '@ngxs/store/operators';
 
 @State<IUserState>({
-	name: 'users',
+	name: 'state',
 	defaults: makeUserState({})
 })
 @Injectable()
@@ -71,5 +72,23 @@ export class UsersState {
 			...state,
 			selectedUser: action.payload ? action.payload.user : null,
 		});
+	}
+
+	@Action(UpdateUserAvatar)
+	updateUserAvatar(stateContext: StateContext<IUserState>, action: UpdateUserAvatar) {
+		const state = stateContext.getState();
+		let userFound = state.users.find((user: IUser) => {
+			return user.id.name === action.payload.idName && user.id.value === action.payload.idValue;
+		});
+
+		stateContext.setState(
+			patch({
+				users: updateItem<IUser>(user =>
+					user.id.name === action.payload.idName && user.id.value === action.payload.idValue,
+					updateUserPictures(userFound, action.payload.localPicture)
+				),
+				selectedUser: updateUserPictures(userFound, action.payload.localPicture)
+			})
+		);
 	}
 }

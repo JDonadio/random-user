@@ -4,21 +4,22 @@
 
     <ion-buttons slot="primary" *ngIf="showResetButton">
       <ion-button (click)="reset()">
-        <ion-icon slot="icon-only" color="primary" name="refresh-outline"></ion-icon>
+        <ion-icon slot="icon-only" color="secondary" name="refresh-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <user-spinner *ngIf="showSpinner"></user-spinner>
 
-  <ion-list *ngIf="!showSpinner">
+  <ion-list>
     <user-row *ngFor="let user of state.users" 
       [user]="user"
       (handleClick)="openUserDetais($event)">
     </user-row>
   </ion-list>
+
+  <spinner *ngIf="showSpinner"></spinner>
 
   <div class="footer__show-more" (click)="showMore()" *ngIf="!showSpinner">Show More</div>
 </ion-content>
