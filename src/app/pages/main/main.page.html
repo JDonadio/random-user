@@ -4,7 +4,7 @@
 
     <ion-buttons slot="primary" *ngIf="showResetButton">
       <ion-button (click)="reset()">
-        <ion-icon slot="icon-only" color="secondary" name="refresh-outline"></ion-icon>
+        <ion-icon slot="icon-only" color="tertiary" name="refresh-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -12,7 +12,7 @@
 
 <ion-content>
 
-  <ion-list>
+  <ion-list lines="none">
     <user-row *ngFor="let user of state.users" 
       [user]="user"
       (handleClick)="openUserDetais($event)">

@@ -15,13 +15,16 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { environment } from 'src/environments/environment';
 import { UsersState } from 'src/app/pages/main/store/users.state';
+import { fancyAnimation } from 'src/app/libs/animations';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({
+      navAnimation: fancyAnimation
+    }),
     AppRoutingModule,
     HttpClientModule,
     NgxsModule.forRoot([

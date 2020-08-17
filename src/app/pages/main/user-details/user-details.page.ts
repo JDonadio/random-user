@@ -3,7 +3,7 @@ import { IUser, IUserState, makeUser } from 'src/app/models/user';
 import { Store, Select } from '@ngxs/store';
 import { Subscription, Observable } from 'rxjs';
 import { UsersState } from 'src/app/pages/main/store/users.state';
-import { SelectUser, UpdateUserAvatar } from 'src/app/pages/main/store/users.actions';
+import { UpdateUserAvatar } from 'src/app/pages/main/store/users.actions';
 import { DatePipe } from '@angular/common';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 

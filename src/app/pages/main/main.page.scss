@@ -1,10 +1,27 @@
 @import 'variables';
+@import 'mixins';
+
+@include keyframes(slide-right) {
+	0% { transform: translateX(-2000px); }
+	100% { transform: translateX(0px); }
+}
+
+@include keyframes(slide-left) {
+	0% { transform: translateX(2000px); }
+	100% { transform: translateX(0px); }
+}
+
+ion-list {
+	@include animation('slide-right .6s 1');
+}
 
 .footer {
 	&__show-more {
+		@include font-primary-bold();
 		text-align: center;
-		font-weight: 600;
-		color: $light-blue;
+		color: $text-color-link;
 		padding: 1.5rem 0;
+
+		@include animation('slide-left .6s 1');
 	}
 }

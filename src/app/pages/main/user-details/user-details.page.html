@@ -4,18 +4,15 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
 
-    <!-- <ion-title>Profile's {{userName}}</ion-title> -->
-
     <ion-buttons slot="primary">
       <ion-button (click)="takePhoto()">
-        <ion-icon slot="icon-only" color="secondary" name="images-outline"></ion-icon>
+        <ion-icon slot="icon-only" color="tertiary" name="images-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
   <div class="header-section">
     <ion-avatar class="header-section__picture">
       <img [src]="user.picture.large">
