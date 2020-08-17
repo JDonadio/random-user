@@ -1,8 +1,10 @@
-.footer {
+@import 'variables';
 
+.footer {
 	&__show-more {
 		text-align: center;
-		color: darkblue;
+		font-weight: 600;
+		color: $light-blue;
 		padding: 1.5rem 0;
 	}
 }

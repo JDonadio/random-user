@@ -10,7 +10,7 @@
 	background-image: linear-gradient(to top, rgba(255, 255, 255, 0.445), rgb(15, 198, 230));
 
 	&__picture {
-		margin-top: $spacing-L;
+		margin-top: $spacing-XXXL;
     width: 130px;
     height: 130px;
     border-radius: $radius-circle;
@@ -22,13 +22,9 @@
 		text-align: center;
 		margin-top: $spacing-XS;
 	}
-	&__name2 {
-		text-align: center;
-		margin-top: $spacing-XS;
-	}
 }
 
 .main-section {
-	width: 100%;
-	padding: 0 2rem;
+	margin: $spacing-XS $spacing-M ;
+	border-top: 1px solid $border-color-secondary;
 }
