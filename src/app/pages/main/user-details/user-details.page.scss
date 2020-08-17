@@ -1,3 +1,5 @@
+@import 'variables';
+
 .header-section {
 	width: 100%;
 	height: 280px;
@@ -8,17 +10,21 @@
 	background-image: linear-gradient(to top, rgba(255, 255, 255, 0.445), rgb(15, 198, 230));
 
 	&__picture {
-		margin-top: 3rem;
+		margin-top: $spacing-L;
     width: 130px;
     height: 130px;
-    border-radius: 50%;
-    border: 2px solid white;
+    border-radius: $radius-circle;
+    border: 2px solid $border-color-tertiary;
     background-color: transparent;
 	}
 
 	&__name {
 		text-align: center;
-		margin-top: 1rem;
+		margin-top: $spacing-XS;
+	}
+	&__name2 {
+		text-align: center;
+		margin-top: $spacing-XS;
 	}
 }
 

@@ -1,0 +1,70 @@
+@import 'colors';
+
+// -------------------------------------------------------------------------------------------
+// COLORS
+// Colors by their semantic meaning, this ones should be used and exported by the entire app
+// -------------------------------------------------------------------------------------------
+
+// TEXT COLORS ---------------------------------------------------------------
+$text-color-primary: $black;
+$text-color-secondary: $reddish-grey;
+$text-color-tertiary: $greyish-brown;
+
+// BACKGROUND COLORS ---------------------------------------------------------
+$background-color-primary: $black;
+$background-color-secondary: $greyish-brown;
+$background-color-tertiary: $black;
+
+//BORDER COLORS --------------------------------------------------------------
+$border-color-primary: $black;
+$border-color-secondary: $greyish-brown;
+$border-color-tertiary: $white;
+
+// -------------------------------------------------------------------------------------------
+// FONTS
+// Standard font sizes
+// -------------------------------------------------------------------------------------------
+$font-size-XXXXXS: 4px;
+$font-size-XXXXS: 8px;
+$font-size-XXXS: 10px;
+$font-size-XXS: 12px;
+$font-size-XS: 13px;
+$font-size-S: 14px;
+$font-size-M: 16px;
+$font-size-L: 18px;
+$font-size-XL: 20px;
+$font-size-XXL: 24px;
+$font-size-XXXL: 32px;
+$font-size-XXXXL: 40px;
+
+
+// -------------------------------------------------------------------------------------------
+// SPACINGS
+// Standard spacings to be used in margins and paddings across the entire app
+// -------------------------------------------------------------------------------------------
+$spacing-XXXS: 4px;
+$spacing-XXS: 8px;
+$spacing-XS: 16px;
+$spacing-S: 20px;
+$spacing-M: 24px;
+$spacing-L: 32px;
+$spacing-XL: 36px;
+$spacing-XXL: 40px;
+
+// -------------------------------------------------------------------------------------------
+// ELEVATIONS
+// Standard levels of z-index. Use these always when z-index is needed
+// -------------------------------------------------------------------------------------------
+$z-index-front: 100;
+$z-index-pre-front: 99;
+$z-index-normal: 10;
+$z-index-back: 1;
+
+// -------------------------------------------------------------------------------------------
+// BORDER RADIUS
+// Standard border radiuses to use in every border-radius across the app
+// -------------------------------------------------------------------------------------------
+$radius-XXS: 4px;
+$radius-XS: 6px;
+$radius-S: 8px;
+$radius-circle: 50%;
