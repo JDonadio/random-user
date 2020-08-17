@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IUserState, makeUserState, IUser } from 'src/app/models/user';
+import { IUser } from 'src/app/models/user';
 import { REQUEST } from 'src/app/utils/consts';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IResponseApi } from 'src/app/models/response-api';
 
@@ -10,8 +10,6 @@ import { IResponseApi } from 'src/app/models/response-api';
   providedIn: 'root'
 })
 export class UserService {
-  public subject = new BehaviorSubject<IUserState>(makeUserState({}));
-
   private results = REQUEST.RESULTS;
   private params = REQUEST.DEFAULT_PARAMS;
 
