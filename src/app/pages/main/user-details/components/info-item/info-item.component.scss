@@ -11,11 +11,11 @@
 
 	&__divider {
 		border: 1px solid $border-color-primary;
-    margin: 23px 10px;
+    margin: $spacing-M $spacing-XXS;
 	}
 
 	&__description {
-		margin: auto auto auto $spacing-XS;
+		margin: auto auto auto $spacing-XXS;
     font-size: $font-size-M;
 	}
 }

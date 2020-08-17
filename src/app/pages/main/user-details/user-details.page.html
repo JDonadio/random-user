@@ -4,7 +4,13 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
 
-    <ion-title>Profile's {{userName}}</ion-title>
+    <!-- <ion-title>Profile's {{userName}}</ion-title> -->
+
+    <ion-buttons slot="primary">
+      <ion-button (click)="takePhoto()">
+        <ion-icon slot="icon-only" color="secondary" name="images-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -23,8 +29,8 @@
 
   <div class="main-section">
     <user-info-item
-      [icon]="'gender'"
-      [info]="user.gender">
+      [icon]="'calendar'"
+      [info]="dob">
     </user-info-item>
 
     <user-info-item

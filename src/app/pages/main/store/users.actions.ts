@@ -20,6 +20,11 @@ export class SelectUser {
 	constructor(public payload?: { user: IUser }) { }
 }
 
+export class UpdateUserAvatar {
+	static readonly type = '[USERS] Update User Avatar';
+	constructor(public payload: { localPicture: string, idName: string, idValue: string }) { }
+}
+
 export class ResetUserState {
 	static readonly type = '[USERS] Reset Users State';
 	constructor() { }
