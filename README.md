@@ -9,7 +9,7 @@ This app connects with https://randomuser.me/ API to retrieve all data needed.
 
 * Fancy Animations - [GitHub Repository](https://github.com/mhartington/v5-animations)
 * Pagination and State management using [NGXS](https://www.ngxs.io/)
-* Takes pictures using the native [camera plugin](https://github.com/apache/cordova-plugin-camera)
+* Takes pictures using the [Capacitor Camera Plugin](https://capacitorjs.com/docs/apis/camera)
 
 ## Prerequisites
 

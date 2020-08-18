@@ -5,7 +5,7 @@ import { Subscription, Observable } from 'rxjs';
 import { UsersState } from 'src/app/pages/main/store/users.state';
 import { UpdateUserAvatar } from 'src/app/pages/main/store/users.actions';
 import { DatePipe } from '@angular/common';
-import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
+import { Plugins, CameraResultType, CameraSource, CameraPhoto } from '@capacitor/core';
 const { Camera } = Plugins;
 
 @Component({
@@ -46,25 +46,21 @@ export class UserDetailsPage implements OnInit {
   }
 
   public async takePhoto() {
-    const pic = await Camera.getPhoto({
-      quality: 100,
-      allowEditing: true,
-      resultType: CameraResultType.DataUrl,
-      source: CameraSource.Camera
-    });
+    let pic: CameraPhoto = null;
 
-    if (pic) {
+    try {
+      pic = await Camera.getPhoto({
+        quality: 100,
+        resultType: CameraResultType.DataUrl,
+        source: CameraSource.Camera
+      });
       this.store.dispatch(new UpdateUserAvatar({
         localPicture: pic.dataUrl,
         idName: this.user.id.name,
         idValue: this.user.id.value
       })).subscribe();
-    } else {
-      this.store.dispatch(new UpdateUserAvatar({
-        localPicture: 'assets/shapes.svg',
-        idName: this.user.id.name,
-        idValue: this.user.id.value
-      })).subscribe();
+    } catch (error) {
+      console.log('Cannot take the photo:', error);
     }
   }
 
