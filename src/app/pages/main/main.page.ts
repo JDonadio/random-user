@@ -26,7 +26,7 @@ export class MainPage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.store.dispatch(new GetUsers({ page: this.pageCounter })).subscribe();
+    this.findUsers();
     this.subscription.add(
       this.usersState$.subscribe(state => {
         this.state = state;
@@ -49,6 +49,10 @@ export class MainPage implements OnInit, OnDestroy {
   public openUserDetais(user: IUser): void {
     this.store.dispatch(new SelectUser({ user })).subscribe();
     this.router.navigate(['user-details'], { relativeTo: this.route });
+  }
+
+  public findUsers() {
+    this.store.dispatch(new GetUsers({ page: this.pageCounter })).subscribe();
   }
 
   public showMore(): void {

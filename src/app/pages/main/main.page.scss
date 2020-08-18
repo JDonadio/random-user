@@ -15,8 +15,17 @@ ion-list {
 	@include animation('slide-right .6s 1');
 }
 
-.footer {
-	&__show-more {
+.main {
+	&__no-data {
+		text-align: center;
+    margin: $spacing-XXL;
+    color: $text-color-primary;
+    border: 2px solid $text-color-primary;
+    border-radius: 4px;
+    padding: $spacing-XXL;
+	}
+
+	&__clear-button {
 		@include font-primary-bold();
 		text-align: center;
 		color: $text-color-link;
