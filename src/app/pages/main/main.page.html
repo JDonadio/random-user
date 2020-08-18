@@ -11,8 +11,13 @@
 </ion-header>
 
 <ion-content>
+  <div class="main__no-data" *ngIf="!state || state.hasError">
+    No data to show
+  </div>
 
-  <ion-list lines="none">
+  <div class="main__clear-button" (click)="findUsers()" *ngIf="(!state || state.hasError) && !showSpinner">Try Again</div>
+
+  <ion-list lines="none" *ngIf="state && state.users">
     <user-row *ngFor="let user of state.users" 
       [user]="user"
       (handleClick)="openUserDetais($event)">
@@ -21,5 +26,5 @@
 
   <spinner *ngIf="showSpinner"></spinner>
 
-  <div class="footer__show-more" (click)="showMore()" *ngIf="!showSpinner">Show More</div>
+  <div class="main__clear-button" (click)="showMore()" *ngIf="state.users[0] && !showSpinner">Show More</div>
 </ion-content>
