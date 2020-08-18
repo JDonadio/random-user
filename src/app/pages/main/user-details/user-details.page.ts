@@ -5,7 +5,8 @@ import { Subscription, Observable } from 'rxjs';
 import { UsersState } from 'src/app/pages/main/store/users.state';
 import { UpdateUserAvatar } from 'src/app/pages/main/store/users.actions';
 import { DatePipe } from '@angular/common';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
+const { Camera } = Plugins;
 
 @Component({
   selector: 'app-user-details',
@@ -23,7 +24,6 @@ export class UserDetailsPage implements OnInit {
   constructor(
     private store: Store,
     private datePipe: DatePipe,
-    private camera: Camera,
   ) { }
 
   ngOnInit() {
@@ -45,30 +45,27 @@ export class UserDetailsPage implements OnInit {
     return `${location.city}, ${location.country}`;
   }
 
-  public takePhoto(): void {
-    const options: CameraOptions = {
+  public async takePhoto() {
+    const pic = await Camera.getPhoto({
       quality: 100,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE,
-      sourceType: this.camera.PictureSourceType.CAMERA,
-    }
+      allowEditing: true,
+      resultType: CameraResultType.DataUrl,
+      source: CameraSource.Camera
+    });
 
-    this.camera.getPicture(options).then((imageData) => {
-      const pic = 'data:image/jpeg;base64,' + imageData;
-      this.store.dispatch(new UpdateUserAvatar({ 
-        localPicture: pic,
+    if (pic) {
+      this.store.dispatch(new UpdateUserAvatar({
+        localPicture: pic.dataUrl,
         idName: this.user.id.name,
         idValue: this.user.id.value
       })).subscribe();
-    }, (err) => {
-      console.log('# Error al capturar la imagen', err);
-        this.store.dispatch(new UpdateUserAvatar({
-          localPicture: 'assets/shapes.svg',
-          idName: this.user.id.name,
-          idValue: this.user.id.value
-        })).subscribe();
-    });
+    } else {
+      this.store.dispatch(new UpdateUserAvatar({
+        localPicture: 'assets/shapes.svg',
+        idName: this.user.id.name,
+        idValue: this.user.id.value
+      })).subscribe();
+    }
   }
 
   ngOnDestroy() {

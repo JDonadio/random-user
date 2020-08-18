@@ -9,7 +9,6 @@ import { UserDetailsPageRoutingModule } from './user-details-routing.module';
 import { UserDetailsPage } from './user-details.page';
 import { InfoItemComponent } from './components/info-item/info-item.component';
 import { DatePipe } from '@angular/common';
-import { Camera } from '@ionic-native/camera/ngx';
 
 @NgModule({
   imports: [
@@ -24,7 +23,6 @@ import { Camera } from '@ionic-native/camera/ngx';
   ],
   providers: [
     DatePipe,
-    Camera,
   ]
 })
 export class UserDetailsPageModule {}
