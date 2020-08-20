@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Users {{totalUsers}}</ion-title>
+    <ion-title>Users {{'(' + totalUsers + ')'}}</ion-title>
 
     <ion-buttons slot="primary" *ngIf="showResetButton">
       <ion-button (click)="reset()">

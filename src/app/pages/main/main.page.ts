@@ -13,9 +13,8 @@ import { GetUsers, ResetUserState, SelectUser } from 'src/app/pages/main/store/u
 })
 export class MainPage implements OnInit, OnDestroy {
   public state: IUserState = makeUserState({});
-
-  private subscription = new Subscription();
-  private pageCounter: number = 1;
+  public pageCounter: number = 1;
+  public subscription = new Subscription();
 
   @Select(UsersState) usersState$!: Observable<IUserState>;
 
@@ -42,27 +41,27 @@ export class MainPage implements OnInit, OnDestroy {
     return this.state && this.state.isLoading;
   }
 
-  get totalUsers(): string {
-    return this.state && `(${this.state.users.length || '..'})`;
+  get totalUsers(): number | string {
+    return (this.state && this.state.users?.length) || '..';
   }
 
   public openUserDetais(user: IUser): void {
-    this.store.dispatch(new SelectUser({ user })).subscribe();
+    this.store.dispatch(new SelectUser({ user }));
     this.router.navigate(['user-details'], { relativeTo: this.route });
   }
 
   public findUsers() {
-    this.store.dispatch(new GetUsers({ page: this.pageCounter })).subscribe();
+    this.store.dispatch(new GetUsers({ page: this.pageCounter }));
   }
 
   public showMore(): void {
     this.pageCounter++;
-    this.store.dispatch(new GetUsers({ page: this.pageCounter })).subscribe();
+    this.store.dispatch(new GetUsers({ page: this.pageCounter }));
   }
   
   public reset(): void {
     this.pageCounter = 1;
-    this.store.dispatch(new ResetUserState()).subscribe();
+    this.store.dispatch(new ResetUserState());
   }
 
   ngOnDestroy() {

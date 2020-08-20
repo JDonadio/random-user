@@ -120,7 +120,12 @@
                 "input": "src/assets",
                 "output": "/assets"
               }
-            ]
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/app/libs/styles"
+              ]
+            }
           },
           "configurations": {
             "ci": {

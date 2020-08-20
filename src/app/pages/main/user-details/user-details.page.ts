@@ -16,8 +16,7 @@ const { Camera } = Plugins;
 export class UserDetailsPage implements OnInit {
   public user: IUser = makeUser({});
   public dob: string = '';
-
-  private subscription = new Subscription();
+  public subscription = new Subscription();
 
   @Select(UsersState) usersState$!: Observable<IUserState>;
 
@@ -36,13 +35,11 @@ export class UserDetailsPage implements OnInit {
   }
 
   get userName() {
-    const {first, last} = this.user.name;
-    return `${first} ${last}`;
+    return this.user?.name ? `${this.user.name.first} ${this.user.name.last}` : '';
   }
 
-  get composedLocation() {if (!this.user) return;
-    const {location} = this.user;
-    return `${location.city}, ${location.country}`;
+  get composedLocation() {
+    return this.user?.location ? `${this.user.location.city}, ${this.user.location.country}` : '';
   }
 
   public async takePhoto() {
