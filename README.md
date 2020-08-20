@@ -1,5 +1,7 @@
 ![image](https://user-images.githubusercontent.com/13851807/90454511-df711580-e0c9-11ea-93cb-d540c4641da2.png)
 
+[![Build Status](https://travis-ci.org/JDonadio/random-user.svg?branch=master)](https://travis-ci.org/JDonadio/random-user)
+
 # Random User App
 
 Simple Ionic 5 application using Angular 9 and Capacitor.
