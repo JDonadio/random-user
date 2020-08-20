@@ -13,6 +13,7 @@
   ],
   "include": [
     "src/**/*.spec.ts",
+    "src/**/*.mock.ts",
     "src/**/*.d.ts"
   ]
 }

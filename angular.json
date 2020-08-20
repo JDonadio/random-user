@@ -107,6 +107,12 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
+            "codeCoverageExclude": [
+              "src/environments/**",
+              "src/polyfills.ts",
+              "src/test.ts",
+              "src/**/*mock.ts"
+            ],
             "styles": [],
             "scripts": [],
             "assets": [
