@@ -1,5 +1,8 @@
 ![image](https://user-images.githubusercontent.com/13851807/90454511-df711580-e0c9-11ea-93cb-d540c4641da2.png)
 
+[![Build Status](https://travis-ci.org/JDonadio/random-user.svg?branch=master)](https://travis-ci.org/JDonadio/random-user)
+[![Coverage Status](https://coveralls.io/repos/github/JDonadio/random-user/badge.svg?branch=develop)](https://coveralls.io/github/JDonadio/random-user?branch=develop)
+
 # Random User App
 
 Simple Ionic 5 application using Angular 9 and Capacitor.
@@ -15,8 +18,10 @@ This app connects with https://randomuser.me/ API to retrieve all data needed.
 
 Must have installed:
 
+```
 1- Ionic v5
 2- Nodejs v10+
+```
 
 Optional:
 
@@ -24,9 +29,11 @@ Optional:
 
 ## Installation
 
+```
 1- Clone the repository
 2- cd random-user
 3- Use the package manager npm to install Random User typing:
+```
 
 ```bash
 npm install
