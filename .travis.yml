@@ -17,3 +17,4 @@ deploy:
  on:
    branch: master
  local_dir: www
+after_success: 'npm run coveralls'
