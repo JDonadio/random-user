@@ -12,7 +12,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="user">
   <div class="header-section">
     <ion-avatar class="header-section__picture">
       <img [src]="user.picture.large">

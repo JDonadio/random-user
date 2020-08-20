@@ -21,4 +21,8 @@ describe('SpinnerComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should exist parameter name with value "dots" as default', () => {
+    expect(component.name).toEqual('dots');
+  });
 });
