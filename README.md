@@ -1,7 +1,7 @@
 ![image](https://user-images.githubusercontent.com/13851807/90454511-df711580-e0c9-11ea-93cb-d540c4641da2.png)
 
 [![Build Status](https://travis-ci.org/JDonadio/random-user.svg?branch=master)](https://travis-ci.org/JDonadio/random-user)
-[![Coverage Status](https://coveralls.io/repos/github/JDonadio/random-user/badge.svg?branch=develop)](https://coveralls.io/github/JDonadio/random-user?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/JDonadio/random-user/badge.svg?branch=master)](https://coveralls.io/github/JDonadio/random-user?branch=master)
 
 # Random User App
 
