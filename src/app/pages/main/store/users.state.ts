@@ -3,9 +3,11 @@ import { State, Action, StateContext } from '@ngxs/store';
 import { GetUsers, GetUsersSuccess, GetUsersFailure, ResetUserState, SelectUser, UpdateUserAvatar } from './users.actions';
 import { IUserState, makeUserState, IUser, updateUserPictures } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user/user.service';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, switchMap, mergeMap } from 'rxjs/operators';
 import { REQUEST } from 'src/app/utils/consts';
 import { patch, updateItem } from '@ngxs/store/operators';
+import { of, throwError } from 'rxjs';
+import { makeHttpError, IHttpError } from 'src/app/models/api-response';
 
 @State<IUserState>({
 	name: 'state',
@@ -28,8 +30,9 @@ export class UsersState {
 
 		return this.userService.getUsers(action.payload.page)
 			.pipe(
-				map((response) => stateContext.dispatch(new GetUsersSuccess({ users: response }))),
-				catchError((error) => stateContext.dispatch(new GetUsersFailure(error)))
+				switchMap((response) => response ? of(response) : throwError(makeHttpError())),
+				mergeMap((response) => stateContext.dispatch(new GetUsersSuccess({ users: response.results }))),
+				catchError((error: IHttpError) => stateContext.dispatch(new GetUsersFailure(error)))
 			)
 	}
 
@@ -60,6 +63,7 @@ export class UsersState {
 		stateContext.setState({
 			...state,
 			users: state.users.slice(0, REQUEST.RESULTS),
+			selectedUser: null,
 			isLoading: false,
 			hasError: false,
 		});

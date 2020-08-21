@@ -1,4 +1,5 @@
 import { IUser } from 'src/app/models/user';
+import { IHttpError } from 'src/app/models/api-response';
 
 export class GetUsers {
 	static readonly type = '[USERS] Get Users';
@@ -12,7 +13,7 @@ export class GetUsersSuccess {
 
 export class GetUsersFailure {
 	static readonly type = '[USERS] Get Users Failure';
-	constructor(public payload: { users: IUser[] }) { }
+	constructor(public payload: IHttpError) { }
 }
 
 export class SelectUser {
